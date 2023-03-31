@@ -23,6 +23,8 @@ public class WeatherForecastController : ControllerBase
     public IEnumerable<WeatherForecast> Get()
     {
         var lawn = new Lawn();
+        ISurfaceCalculator metricArea = new ImperialSurfaceCalculator();
+
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
         {
             Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),

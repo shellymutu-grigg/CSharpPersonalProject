@@ -1,6 +1,7 @@
 ﻿namespace csharp_personal_project
 {
-	public interface ICalculateSurface
+	public interface ISurfaceCalculator
 	{
+		double CalculateSurfaceArea(double length, double width);
 	}
 }
