@@ -1,32 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Net.Mime;
+using csharp_personal_project.BusinessLogic;
 using csharp_personal_project.Model;
 
 namespace csharp_personal_project.Controllers
 {
-	[ApiController]
+    [ApiController]
 	[Route("[controller]")]
 	public class GardenAreaController : ControllerBase
 	{
-		[HttpGet("getFirst")]
-		public BaseGardenArea GetFirst()
+		[HttpGet("get")]
+		public BaseGardenArea Get()
 		{
-			var blah = new Plant { name = "Lawn xyz", description = "lawn is green", length = 2.0, width = 4.5 };
-			var foo = blah.width;
-			return blah;
+			var gardenAreaService = new GardenAreaService();
+			var gardenArea = gardenAreaService.GetGardenArea();
+			return gardenArea;
 		}
 
-		[HttpGet("getSecond/")]
-		public Object GetSecond()
-		{
-			var lawn = new Lawn();
-			lawn.name = "Lawn 02";
-
-			return new { name = "blah" };
-		}
-
-		[HttpGet("GetWeatherForecast")]
-		public IEnumerable<WeatherForecast> Get()
+		[HttpGet(Name = "GetWeatherForecast2")]
+		public IEnumerable<WeatherForecast> GetWeatherForecast()
 		{
 			var lawn = new Lawn();
 			ISurfaceCalculator metricArea = new ImperialSurfaceCalculator();

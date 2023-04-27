@@ -1,10 +1,10 @@
-﻿namespace csharp_personal_project
-{
-	public class BaseGardenArea
-	{
-		public double length;
-		public double width;
+namespace csharp_personal_project;
 
-		public string? name;
-	}
+public class BaseGardenArea
+{
+    public DateOnly Date { get; set; }
+
+	public double length { get; set; }
+	public double width { get; set; }
+	public string? name { get; set; }
 }
