@@ -2,9 +2,8 @@ namespace csharp_personal_project;
 
 public class BaseGardenArea
 {
-    public DateOnly Date { get; set; }
-
-	public double length { get; set; }
-	public double width { get; set; }
-	public string? name { get; set; }
+	public double Length { get; set; }
+	public double Width { get; set; }
+	public string? Name { get; set; }
+	public double SurfaceArea { get; set; }
 }

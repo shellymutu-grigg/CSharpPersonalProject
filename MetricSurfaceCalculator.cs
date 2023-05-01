@@ -4,6 +4,7 @@
 	{
 		public double CalculateSurfaceArea(double length, double width)
 		{
+			return length * width;
 			throw new NotImplementedException();
 		}
 	}

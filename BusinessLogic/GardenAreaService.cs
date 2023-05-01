@@ -1,13 +1,15 @@
-﻿using csharp_personal_project.Model;
-
-namespace csharp_personal_project.BusinessLogic
+﻿namespace csharp_personal_project.BusinessLogic
 {
     public class GardenAreaService
 	{
 		public BaseGardenArea GetGardenArea() {
 			var area = new BaseGardenArea();
-			area.name = "lawn";
-			area.width = 2.098;
+			var lawn = new Lawn();
+			ISurfaceCalculator metricCalculator = new MetricSurfaceCalculator();
+			var surfaceArea = metricCalculator.CalculateSurfaceArea(400,567);
+			area.Name = "lawn";
+			area.Width = 2.098;
+			area.SurfaceArea = surfaceArea;
 			return area;
 		}
 	}
