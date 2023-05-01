@@ -7,11 +7,17 @@ namespace csharp_personal_project.Controllers
 	[Route("[controller]")]
 	public class GardenAreaController : ControllerBase
 	{
+		private IGardenAreaService _gardenAreaService;
+
+		public GardenAreaController(IGardenAreaService gardenAreaService)
+		{
+			_gardenAreaService = gardenAreaService; 
+		}
+
 		[HttpGet(Name = "GetGardenArea")]
 		public BaseGardenArea Get()
 		{
-			var gardenAreaService = new GardenAreaService();
-			var gardenArea = gardenAreaService.GetGardenArea();
+			var gardenArea = _gardenAreaService.GetGardenArea(); // Add unit parameter here
 			return gardenArea;
 		}
 	}
