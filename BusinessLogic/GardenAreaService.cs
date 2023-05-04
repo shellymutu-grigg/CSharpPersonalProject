@@ -7,13 +7,18 @@
 		public GardenAreaService(ISurfaceCalculator surfaceCalculator) {
 			_surfaceCalulator = surfaceCalculator;
 		}
-		public BaseGardenArea GetGardenArea() {
-			var area = new BaseGardenArea();
+		public BaseGardenArea GetGardenArea(string measurementType) {
+			var area = new BaseGardenArea
+			{
+				Width = 2.098,
+				Length = 4.06,
+				Name = "lawn"
+			};
+
+			var surfaceArea = _surfaceCalulator.CalculateSurfaceArea(area.Length,area.Width); //Convert to take unit parameter
+
 			var lawn = new Lawn();
 
-			var surfaceArea = _surfaceCalulator.CalculateSurfaceArea(400,567); //Convert to take unit parameter
-			area.Name = "lawn";
-			area.Width = 2.098;
 			area.SurfaceArea = surfaceArea;
 			return area;
 		}
