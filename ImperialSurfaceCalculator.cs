@@ -4,7 +4,9 @@
 	{
 		public double CalculateSurfaceArea(double length, double width)
 		{
-			throw new NotImplementedException();
+			System.Diagnostics.Debug.WriteLine($"ImperialSurfaceCalculator CalculateSurfaceArea FEET");
+			// Imperial conversion from m2 to ft2 x * 10.7639 
+			return (length * width) * 10.7639;
 		}
 	}
 }

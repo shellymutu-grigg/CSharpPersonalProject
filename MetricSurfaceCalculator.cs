@@ -2,10 +2,12 @@
 {
 	public class MetricSurfaceCalculator : ISurfaceCalculator
 	{
+
 		public double CalculateSurfaceArea(double length, double width)
 		{
+			System.Diagnostics.Debug.WriteLine($"MetricSurfaceCalculator CalculateSurfaceArea METERS");
+			// Expected in meters result m2
 			return length * width;
-			throw new NotImplementedException();
 		}
 	}
 }

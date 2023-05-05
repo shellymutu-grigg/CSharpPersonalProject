@@ -22,10 +22,7 @@ public class WeatherForecastController : ControllerBase
     [HttpGet(Name = "GetWeatherForecast")]
     public IEnumerable<WeatherForecast> Get()
     {
-        var lawn = new Lawn();
-        ISurfaceCalculator metricArea = new ImperialSurfaceCalculator();
-
-        return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+	    return Enumerable.Range(1, 5).Select(index => new WeatherForecast
         {
             Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
             TemperatureC = Random.Shared.Next(-20, 55),

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using csharp_personal_project.BusinessLogic;
+using Microsoft.Extensions.Logging;
 
 namespace csharp_personal_project.Controllers
 {
@@ -11,13 +12,14 @@ namespace csharp_personal_project.Controllers
 
 		public GardenAreaController(IGardenAreaService gardenAreaService)
 		{
-			_gardenAreaService = gardenAreaService; 
+			_gardenAreaService = gardenAreaService;
 		}
 
-		[HttpGet(Name = "GetGardenAreaMetric")]
-		public BaseGardenArea GetMetric()
+		[HttpGet(Name = "GetGardenArea")]
+		public BaseGardenArea Get()
 		{
-			var gardenArea = _gardenAreaService.GetGardenArea("metric"); // Add unit parameter here
+			//var gardenArea = _gardenAreaService.GetGardenArea("metric");
+			var gardenArea = _gardenAreaService.GetGardenArea("imperial"); // Add unit parameter here
 			return gardenArea;
 		}
 	}

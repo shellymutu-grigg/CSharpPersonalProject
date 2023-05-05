@@ -1,25 +1,42 @@
-﻿namespace csharp_personal_project.BusinessLogic
+﻿
+namespace csharp_personal_project.BusinessLogic
 {
 	public class GardenAreaService : IGardenAreaService
 	{
-		private readonly ISurfaceCalculator _surfaceCalulator;
+		private readonly ISurfaceCalculator _surfaceCalculator;
 
 		public GardenAreaService(ISurfaceCalculator surfaceCalculator) {
-			_surfaceCalulator = surfaceCalculator;
+			// _surfaceCalculator is always ImperialSurfaceCalculator, trying to work out how to change assignment
+			System.Diagnostics.Debug.WriteLine($" surfaceCalculator.GetType() {surfaceCalculator.GetType()}");
+			_surfaceCalculator = surfaceCalculator;
 		}
-		public BaseGardenArea GetGardenArea(string measurementType) {
+
+		private readonly ISurfaceCalculator _metricCalculator = new MetricSurfaceCalculator();
+		public BaseGardenArea GetGardenArea(string measurementType) { //Takes a string but is doing nothing with it
 			var area = new BaseGardenArea
 			{
-				Width = 2.098,
-				Length = 4.06,
+				Width = 2.0,
+				Length = 4.0,
 				Name = "lawn"
 			};
 
-			var surfaceArea = _surfaceCalulator.CalculateSurfaceArea(area.Length,area.Width); //Convert to take unit parameter
+			if (measurementType == "metric")
+			{
 
-			var lawn = new Lawn();
+				var surfaceAreaMetric = _metricCalculator.CalculateSurfaceArea(area.Length, area.Width);
+				System.Diagnostics.Debug.WriteLine($" surfaceAreaMetric {surfaceAreaMetric}");
 
-			area.SurfaceArea = surfaceArea;
+				area.SurfaceArea = surfaceAreaMetric;
+			}
+
+			if (measurementType == "imperial")
+			{
+				var surfaceAreaImperial = _surfaceCalculator.CalculateSurfaceArea(area.Length, area.Width);
+				System.Diagnostics.Debug.WriteLine($" surfaceAreaImperial {surfaceAreaImperial}");
+
+				area.SurfaceArea = surfaceAreaImperial;
+			}
+
 			return area;
 		}
 	}
