@@ -2,6 +2,6 @@
 {
 	public interface IGardenAreaService
 	{
-		BaseGardenArea GetGardenArea(string measurementType);
+		BaseGardenArea GetGardenArea();
 	}
 }
