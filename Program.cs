@@ -19,6 +19,8 @@ builder.Services.AddSwaggerGen(options =>
 	}
 );
 
+builder.Services.AddTransient<ISurfaceCalculator, MetricSurfaceCalculator>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
