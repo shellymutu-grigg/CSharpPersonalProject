@@ -20,6 +20,7 @@ builder.Services.AddSwaggerGen(options =>
 );
 
 builder.Services.AddTransient<ISurfaceCalculator, MetricSurfaceCalculator>();
+builder.Services.AddTransient<IGardenAreaService, GardenAreaService>();
 
 var app = builder.Build();
 

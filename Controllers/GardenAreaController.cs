@@ -8,17 +8,16 @@ namespace csharp_personal_project.Controllers
 	[Route("[controller]")]
 	public class GardenAreaController : ControllerBase
 	{
-		private readonly ISurfaceCalculator _surfaceAreaCalculator;
+		private readonly IGardenAreaService _gardenAreaService;
 
-		public GardenAreaController(ISurfaceCalculator surfaceCalculator)
+		public GardenAreaController(IGardenAreaService gardenAreaService)
 		{
-			_surfaceAreaCalculator = surfaceCalculator;
+			_gardenAreaService = gardenAreaService;
 		}
 
 		[HttpGet(Name = "GardenArea")]
 		public BaseGardenArea GetFirst()
 		{
-			var _gardenAreaService = new GardenAreaService(_surfaceAreaCalculator);
 			var gardenArea = _gardenAreaService.GetGardenArea();
 			return gardenArea;
 		}
