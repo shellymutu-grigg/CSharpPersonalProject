@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 namespace csharp_personal_project.Controllers
 {
     [ApiController]
-	[Route("[controller]")]
+	[Route("/")]
 	public class GardenAreaController : ControllerBase
 	{
 		private readonly IGardenAreaService _gardenAreaService;
@@ -15,11 +15,22 @@ namespace csharp_personal_project.Controllers
 			_gardenAreaService = gardenAreaService;
 		}
 
-		[HttpGet(Name = "GardenArea")]
-		public BaseGardenArea GetFirst()
+		[HttpGet("GardenArea")]
+		public BaseGardenArea GetGardenArea(double length, double width)
 		{
-			var gardenArea = _gardenAreaService.GetGardenArea();
-			return gardenArea;
+			return _gardenAreaService.GetGardenArea(length, width);
+		}
+
+		[HttpPut("GardenAreaType")]
+		public void SetType(BaseGardenArea area, string type)
+		{
+			_gardenAreaService.SetGardenAreaType(area, type);
+		}
+
+		[HttpGet("GardenAreaType")]
+		public string GetType(BaseGardenArea area)
+		{
+			return _gardenAreaService.GetGardenAreaType(area);
 		}
 	}
 }

@@ -2,6 +2,10 @@
 {
 	public interface IGardenAreaService
 	{
-		BaseGardenArea GetGardenArea();
+		BaseGardenArea GetGardenArea(double length, double width);
+
+		void SetGardenAreaType(BaseGardenArea area, string type);
+
+		string GetGardenAreaType(BaseGardenArea area);
 	}
 }
