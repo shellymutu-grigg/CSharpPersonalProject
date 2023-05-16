@@ -22,14 +22,18 @@ namespace csharp_personal_project.Controllers
 		}
 
 		[HttpPut("GardenAreaType")]
-		public void SetType(BaseGardenArea area, string type)
+		public void SetGardenAreaType(BaseGardenArea area, string type)
 		{
 			_gardenAreaService.SetGardenAreaType(area, type);
 		}
 
 		[HttpGet("GardenAreaType")]
-		public string GetType(BaseGardenArea area)
+		public string GetGardenAreaType()
 		{
+			BaseGardenArea area = new BaseGardenArea()
+			{
+				Type = "Default"
+			};
 			return _gardenAreaService.GetGardenAreaType(area);
 		}
 	}
